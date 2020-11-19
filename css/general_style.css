@@ -1,0 +1,33 @@
+/* Import Google Fonts */
+@import 'https://fonts.googleapis.com/css?family=Material+Icons|Roboto:100,200,300,400,500,600,700,800,900|Roboto+Condensed:100,200,300,400,500,600,700,800,900|Open+Sans+Condensed:100,200,300,400,500,600,700,800,900|Righteous:100,200,300,400,500,600,700,800,900';
+
+/* Set a unified style */
+* {
+	box-sizing:border-box;
+	margin:0px;
+	padding:0px;
+	text-decoration:none;
+	list-style:none;
+	border:0px;
+}
+
+body{
+	font-size:14px;
+	font-family:'Roboto';
+}
+
+a {
+	transition:all ease 0.3s;
+}
+
+/* Set a clear fix */
+.crt-clear-fix {
+	clear:both;
+}
+
+/* sticky header */
+.sticky {
+	position: fixed;
+	top: 0;
+	width: 100%
+}

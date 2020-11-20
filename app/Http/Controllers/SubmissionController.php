@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SubmissionMail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class SubmissionController extends Controller
 {
@@ -53,7 +55,13 @@ class SubmissionController extends Controller
             ]
         );
 
-        if($validator->fails()) return $this->sendError($this->arrayToChaine($validator->errors()->messages()), null);
+        // if($validator->fails()) return $this->sendError($this->arrayToChaine($validator->errors()->messages()), null);
+
+        $request['nom'] = "Alhassane";
+        Mail::to('alhassanesoro96@gmail.com')
+        ->send(new SubmissionMail($request->except('_token')));
+
+        return view('pages.accueil.index');
     }
 
     /**

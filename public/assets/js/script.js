@@ -45,5 +45,5 @@ $(".crt-theme-style a").on("click",function(){
 
 // Logo submission
 function logo_submit() {
-	window.location.href= "submission.html";
+	window.location.href= "/submission";
 }

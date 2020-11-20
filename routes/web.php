@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SubmissionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('pages.accueil.index');
-});
+
+//
+Route::get('/', [HomeController::class,'index'])->name('index');
+Route::get('/submission', [SubmissionController::class,'index'])->name('submission.index');
+Route::post('/submission', [SubmissionController::class,'store'])->name('submission.store');
+

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
-class SubmitLogosController extends Controller
+class SubmissionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -38,48 +38,23 @@ class SubmitLogosController extends Controller
         $input=$request->all();
         $validator=Validator::make($input,
             [
-                'name'  =>'required|string',
+                'nom'  =>'required|string',
                 'email'  =>'required|email',
                 'business_name'  =>'required|string',
-                'photo_svg'  =>'required|file|mimes:svg',
-                'photo_png'  =>'required|file|mimes:png'
+                'file_svg'  =>'required|file|mimes:svg',
+                'file_png'  =>'required|file|mimes:png'
             ],
             [
-                'name.*'  =>"Veuillez saisir le nom svp",
-                'email.*'  =>"Veuillez saisir une adresse email valide",
-                'business_name.*'  =>"Veuillez saisir une adresse email valide",
-                'photo_svg.*'  =>"Veuillez uploadé un fichier au format svg",
-                'photo_png.*'  =>"Veuillez uploadé un fichier au format png"
+                'nom'  =>"Veuillez saisir le nom svp",
+                'email'  =>"Veuillez saisir une adresse email valide",
+                'business_name'  =>"Veuillez saisir une adresse email valide",
+                'file_svg'  =>"Veuillez uploadé un fichier au format svg",
+                'file_png'  =>"Veuillez uploadé un fichier au format png"
             ]
         );
 
         if($validator->fails()) return $this->sendError($this->arrayToChaine($validator->errors()->messages()), null);
-        $categorie = Categorie::find($request->$categories_id);
-        BuisnessLogo::create([
-            'name'          =>$request->name,
-            'email'         =>$request->email,
-            'business_name' =>$request->business_name,
-            'photo_svg'     =>$this->uploadPieceJointe($request->photo_svg,$categorie->libelle),
-            'photo_png'     =>$this->uploadPieceJointe($request->photo_png,$categorie->libelle,'svg'),
-        ]);
-
-        return response()->json([
-            'error'=>false,
-            'message'=>"",
-            'data'=>[],
-        ])
     }
-
-    public function uploadPieceJointe(Request $request, $categorie, $logo_type='png'){
-        if(!is_file($request->logo_svg) || is_null($request->logo_png)) return null;
-        $folder=Str::slug($categorie);
-        $filename=Str::slug($request->business_name);
-        $filename=$filename.'.'.$request->piece_jointe->extension();
-        $path=$request->piece_jointe->move(storage_path('app/public/uploads/logos/'.$logo_type.'/'.$folder),$filename);
-
-        return 'storage/logos/'.$logo_type.'/'.$folder.'/'.$filename;
-    }
-
 
     /**
      * Display the specified resource.

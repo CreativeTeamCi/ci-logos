@@ -94,7 +94,7 @@
 								<b>Votre email</b>
 								<span class="text-danger">*</span>
 							</label>
-							<input type="text" name="email" placeholder="abc@email.com">
+							<input type="text" name="email" placeholder="abc@email.com" id=email>
 							<small class="float-left description_input">
 								Nous en avons besoin pour pouvoir assurer un suivi avec vous au cas où des améliorations seraient recommandées
 								et aussi pour que nous puissions vous faire savoir quand vos logos sont en ligne sur le site.
@@ -103,16 +103,16 @@
 					</div>
 					<div class="row">
 						<div class="col-100">
-							<label for="email" class="float-left">
+							<label for="business_name" class="float-left">
 								<b>Noms commerciaux et catégorie</b>
 								<span class="text-danger">*</span>
 							</label>
-							<input type="text" name="business_name" placeholder="Ex: CreativeTeam (Communauté)">
+							<input type="text" name="business_name" id="business_name" placeholder="Ex: CreativeTeam (Communauté)">
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-100">
-							<label for="email" class="float-left">
+							<label for="svg_logo" class="float-left">
 								<b>SVG Logos</b>
 							</label>
 							<br><br>
@@ -120,16 +120,16 @@
 								1. Veuillez vous assurer que vos fichiers SVG sont propres et qu'ils n'ont pas de
 								formats d'image (par exemple png, jpgs) intégrés
 							</label>
-							<input type="file">
+							<input name="svg_logo" id="svg_logo" type="file">
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-100">
-							<label for="email" class="float-left">
+							<label for="png_logo" class="float-left">
 								<b>PNG Logos</b>
 								<span class="text-danger">*</span>
 							</label>
-							<input type="file">
+							<input name="png_logo" id="png_logo" type="file">
 						</div>
 					</div>
 					<div class="row">

@@ -18,13 +18,14 @@ use App\Http\Controllers\SubmissionController;
 //
 Route::get('/', [HomeController::class,'index'])->name('index');
 Route::get('/submission', [SubmissionController::class,'index'])->name('submission.index');
+Route::get('/test-mail', [SubmissionController::class,'testemail']);
 Route::post('/submission', [SubmissionController::class,'store'])->name('submission.store');
 
-Route::get('/test-mail', function () {
-    return new App\Mail\SubmissionMail([
-      'nom' => 'Alhassane',
-      'email' => 'durand@chezlui.com',
-      'message' => 'Je voulais vous dire que votre site est magnifique !'
-      ]);
-});
+// Route::get('/test-mail', function () {
+//     return new App\Mail\SubmissionMail([
+//       'nom' => 'Alhassane',
+//       'email' => 'alhassanesoro96@gmail.com',
+//       'message' => 'Je voulais vous dire que votre site est magnifique !'
+//       ]);
+// });
 

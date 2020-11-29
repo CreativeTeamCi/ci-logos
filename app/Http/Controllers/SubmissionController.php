@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Mail\SubmissionMail;
+use App\Models\Submission;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class SubmissionController extends Controller
 {
@@ -55,15 +57,49 @@ class SubmissionController extends Controller
             ]
         );
 
-        // if($validator->fails()) return $this->sendError($this->arrayToChaine($validator->errors()->messages()), null);
+        if($validator->fails()) return $this->sendError($this->arrayToChaine($validator->errors()->messages()), null);
 
-        $request['nom'] = "Alhassane";
-        Mail::to('alhassanesoro96@gmail.com')
+        $request['status'] = "soumis";
+        $data = Submission::create([
+            'name'          =>$request->name,
+            'email'         =>$request->email,
+            'business_name' =>$request->business_name,
+            'file_svg'     =>$this->uploadPieceJointe($request->photo_svg,$request->business_name,'svg'),
+            'file_png'     =>$this->uploadPieceJointe($request->photo_png,$request->business_name,'png'),
+            'status'       =>$request->status,
+        ]);
+
+        //Envoi du mail d'upload du formulaire
+        Mail::to($request->email)
         ->send(new SubmissionMail($request->except('_token')));
 
-        return view('pages.accueil.index');
+        return response()->json([
+            'error'=>false,
+            'message'=>"Votre logo a été soumis avec succès.",
+            'data'=>$data,
+        ]);
+
     }
 
+    public function testemail()
+    {
+        $data = [
+            'nom' => 'Alhassane',
+            'email' => 'alhassanesoro96@gmail.com',
+            'message' => 'Je voulais vous dire que votre site est magnifique !'
+        ];
+        Mail::to("alhassanesoro96@gmail.com")
+        ->send(new SubmissionMail($data));
+    }
+    public function uploadPieceJointe(Request $request, $categorie, $logo_type='png'){
+        if(!is_file($request->logo_svg) || is_null($request->logo_png)) return null;
+        $folder=Str::slug($categorie);
+        $filename=Str::slug($request->business_name);
+        $filename=$filename.'.'.$request->piece_jointe->extension();
+        $path=$request->piece_jointe->move(storage_path('app/public/uploads/logos/'.$logo_type.'/'.$folder),$filename);
+
+        return 'storage/logos/'.$logo_type.'/'.$folder.'/'.$filename;
+    }
     /**
      * Display the specified resource.
      *

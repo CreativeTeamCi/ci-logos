@@ -331,9 +331,12 @@ ul.social li{
           <td valign="top" class="bg_white" style="padding: 1em 2.5em 0 2.5em;">
           	<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
           		<tr>
-          			<td class="logo" style="text-align: center;">
-			            <h1><a href="#">e-Verify</a></h1>
-			          </td>
+          			<td class="logo" style="text-align: left;">
+			            <h1><a href="#">CI Logos</a></h1>
+                    </td>
+                      <td class="logo" style="text-align: right;">
+			            <h1><a href="#"><img src="{{asset('')}}assets/images/logo.png" width="50" height="50"></a></h1>
+                    </td>
           		</tr>
           	</table>
           </td>
@@ -349,9 +352,9 @@ ul.social li{
             	<tr>
             		<td>
             			<div class="text" style="padding: 0 2.5em; text-align: center;">
-            				<h2>{{ $submission['nom'] }}</h2>
-            				<h3>Amazing deals, updates, interesting news right in your inbox</h3>
-            				<p><a href="#" class="btn btn-primary">Yes! Subscribe Me</a></p>
+            				<h2>Felicitations Alhassane votre logo a été uploadé</h2>
+            				<h3>votre réquête sera traité. Nous vous enverrons un mail de validation ou de rejet de votre logo après traitement</h3>
+            				{{-- <p><a href="#" class="btn btn-primary">Yes! Subscribe Me</a></p> --}}
             			</div>
             		</td>
             	</tr>
@@ -369,8 +372,8 @@ ul.social li{
                   <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                     <tr>
                       <td style="text-align: left; padding-right: 10px;">
-                      	<h3 class="heading">About</h3>
-                      	<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                      	<h3 class="heading">A propos</h3>
+                      	<p>Creative Team des idées creatives pour le rayonnement de l'Afrique</p>
                       </td>
                     </tr>
                   </table>
@@ -379,10 +382,10 @@ ul.social li{
                   <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                     <tr>
                       <td style="text-align: left; padding-left: 5px; padding-right: 5px;">
-                      	<h3 class="heading">Contact Info</h3>
+                      	<h3 class="heading">Contacts</h3>
                       	<ul>
-					                <li><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-					                <li><span class="text">+2 392 3929 210</span></a></li>
+					                <li><span class="text">+225 59 97 15 82</span></a></li>
+					                <li><span class="text">+225 59 97 15 82</span></a></li>
 					              </ul>
                       </td>
                     </tr>
@@ -392,12 +395,10 @@ ul.social li{
                   <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
                     <tr>
                       <td style="text-align: left; padding-left: 10px;">
-                      	<h3 class="heading">Useful Links</h3>
+                      	<h3 class="heading">Lien Important</h3>
                       	<ul>
-					                <li><a href="#">Home</a></li>
-					                <li><a href="#">About</a></li>
-					                <li><a href="#">Services</a></li>
-					                <li><a href="#">Work</a></li>
+					                <li><a href="#">Acceuil</a></li>
+					                <li><a href="#">Soumettre un logo</a></li>
 					              </ul>
                       </td>
                     </tr>
@@ -409,7 +410,7 @@ ul.social li{
         </tr><!-- end: tr -->
         <tr>
           <td class="bg_light" style="text-align: center;">
-          	<p>No longer want to receive these email? You can <a href="#" style="color: rgba(0,0,0,.8);">Unsubscribe here</a></p>
+          	<p><a href="#" style="color: rgba(0,0,0,.8);">© CreativeTeam 2020</a></p>
           </td>
         </tr>
       </table>

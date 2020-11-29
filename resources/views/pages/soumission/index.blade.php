@@ -81,81 +81,21 @@
 						La révision et la fusion de votre logo peuvent prendre jusqu'à 48 heures.
 						Si vous êtes un développeur ou si vous avez un développeur disponible pour vous aider, vous pouvez contribuer directement au repo sur Github ici :
 					</p>
-<<<<<<< HEAD
-					<br>
-					<div class="row">
-						<div class="col-100">
-							<label for="nom" class="float-left"><b>Votre nom </b><span class="text-danger">*</span></label>
-							<input type="text" name="nom" placeholder="Votre nom..">
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-100">
-							<label for="email" class="float-left">
-								<b>Votre email</b>
-								<span class="text-danger">*</span>
-							</label>
-							<input type="text" name="email" placeholder="abc@email.com" id=email>
-							<small class="float-left description_input">
-								Nous en avons besoin pour pouvoir assurer un suivi avec vous au cas où des améliorations seraient recommandées
-								et aussi pour que nous puissions vous faire savoir quand vos logos sont en ligne sur le site.
-							</small>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-100">
-							<label for="business_name" class="float-left">
-								<b>Noms commerciaux et catégorie</b>
-								<span class="text-danger">*</span>
-							</label>
-							<input type="text" name="business_name" id="business_name" placeholder="Ex: CreativeTeam (Communauté)">
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-100">
-							<label for="svg_logo" class="float-left">
-								<b>SVG Logos</b>
-							</label>
-							<br><br>
-							<label class="float-left description_input">
-								1. Veuillez vous assurer que vos fichiers SVG sont propres et qu'ils n'ont pas de
-								formats d'image (par exemple png, jpgs) intégrés
-							</label>
-							<input name="svg_logo" id="svg_logo" type="file">
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-100">
-							<label for="png_logo" class="float-left">
-								<b>PNG Logos</b>
-								<span class="text-danger">*</span>
-							</label>
-							<input name="png_logo" id="png_logo" type="file">
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-100">
-							<input type="submit" value="Soumettre">
-						</div>
-					</div>
-				</div>
-=======
                     <br>
-                    <form action="{{route('submission.store')}}" method="POST">
-                        @csrf
+                    <form id="add-submission" method="POST" enctype="multipart/form-data" method="{{route('submission.store')}}">
                         <div class="row">
-                            <div class="col-100">
+                            <div class="col-100 nom">
                                 <label for="nom" class="float-left"><b>Votre nom </b><span class="text-danger">*</span></label>
-                                <input type="text" name="nom" placeholder="Votre nom..">
+                                <input type="text" name="nom" placeholder="Votre nom.." id="nom">
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-100">
+                            <div class="col-100 email">
                                 <label for="email" class="float-left">
                                     <b>Votre email</b>
                                     <span class="text-danger">*</span>
                                 </label>
-                                <input type="text" name="email" placeholder="abc@email.com">
+                                <input type="text" name="email" placeholder="abc@email.com" id="email">
                                 <small class="float-left description_input">
                                     Nous en avons besoin pour pouvoir assurer un suivi avec vous au cas où des améliorations seraient recommandées
                                     et aussi pour que nous puissions vous faire savoir quand vos logos sont en ligne sur le site.
@@ -163,17 +103,17 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-100">
-                                <label for="email" class="float-left">
+                            <div class="col-100 business_name">
+                                <label for="business_name" class="float-left">
                                     <b>Noms commerciaux et catégorie</b>
                                     <span class="text-danger">*</span>
                                 </label>
-                                <input type="text" name="business_name" placeholder="Ex: CreativeTeam (Communauté)">
+                                <input type="text" name="business_name" id="business_name" placeholder="Ex: CreativeTeam (Communauté)">
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-100">
-                                <label for="email" class="float-left">
+                            <div class="col-100 file_svg">
+                                <label for="svg_logo" class="float-left">
                                     <b>SVG Logos</b>
                                 </label>
                                 <br><br>
@@ -181,26 +121,25 @@
                                     1. Veuillez vous assurer que vos fichiers SVG sont propres et qu'ils n'ont pas de
                                     formats d'image (par exemple png, jpgs) intégrés
                                 </label>
-                                <input type="file_svg">
+                                <input name="file_svg" id="file_svg" type="file">
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-100">
-                                <label for="email" class="float-left">
+                            <div class="col-100 file_png">
+                                <label for="png_logo" class="float-left">
                                     <b>PNG Logos</b>
                                     <span class="text-danger">*</span>
                                 </label>
-                                <input type="file_png">
+                                <input name="file_png" id="file_png" type="file">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-100">
-                                <input type="submit" value="Soumettre">
+                                <input type="submit" class="soumettre" value="Soumettre" onclick="FormUpload()">
                             </div>
                         </div>
                     </form>
-                </div>
->>>>>>> f5ea8876a55b12deba5e67ec1cd5de20d692b5b5
+				</div>
 			</div>
 			<!-- Footer -->
 			<div class="crt-footer">
@@ -224,6 +163,8 @@
 		<!-- JQuery -->
 		<script src="{{asset('')}}assets/js/jquery-3.5.0.min.js"></script>
 		<!-- Main Script -->
-		<script src="{{asset('')}}assets/js/script.js"></script>
+        <script src="{{asset('')}}assets/js/script.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
 	</body>
 </html>

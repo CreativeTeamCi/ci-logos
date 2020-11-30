@@ -52,7 +52,7 @@
 			<div class="crt-header sticky">
 				<div class="crt-header-content">
 					<div class="crt-header-logo">
-						<a href="index.html">CI Logos</a>
+						<a href="/">CI Logos</a>
 					</div>
 					<div class="crt-search-btn">
 						<i class="material-icons">search</i>
@@ -82,136 +82,44 @@
 						<i class="fa fa-github"></i>
 						&nbsp;
 						Contribuer sur GitHub
-					</button>
-					<button class="crt__btn__submission" onclick="logo_submit()">
-						<i class="fa fa-paper-plane"></i>
-						&nbsp;
-						Soumettre un logo
-					</button>
-				</div>
-				<div class="crt__logo">
-					<div class="crt__logo__holder">
-						<div class="crt__logo__image">
-							<img src='{{asset('')}}assets/images/portfolio/logo_1.svg' alt='SVG logo'>
-						</div>
-						<div class="crt__logo__download">
-							<div class="crt__logo__download__overlay">
-								<a href="{{asset('')}}assets/images/portfolio/logo_1.svg" download="SVG Logo">
-									<span class="crt__logo__download__overlay--svg">
-										Download SVG
-									</span>
-								</a>
+                    </button>
+                    <a href="{{route('submission.index')}}">
+                        <button class="crt__btn__submission">
+                            <i class="fa fa-paper-plane"></i>
+                            &nbsp;
+                            Soumettre un logo
+                        </button>
+                    </a>
+                </div>
 
-								<a href="{{asset('')}}assets/images/portfolio/logo_1.svg" download="SVG Logo">
-									<span class="crt__logo__download__overlay--png">
-										Download PNG
-									</span>
-								</a>
-							</div>
-						</div>
-					</div>
-					<div class="crt__logo__text">
-						<p class="crt__logo__text--primary">9mobile</p>
-						<p class="crt__logo__text--secondary">Telecommunication / ISP</p>
-					</div>
-				</div> <!-- end crt-logo -->
-				<div class="crt__logo">
-					<div class="crt__logo__holder">
-						<div class="crt__logo__image">
-							<img src='{{asset('')}}assets/images/portfolio/logo_1.svg' alt='SVG logo'>
-						</div>
-						<div class="crt__logo__download">
-							<div class="crt__logo__download__overlay">
-								<a href="{{asset('')}}assets/images/portfolio/logo_1.svg" download="SVG Logo">
-									<span class="crt__logo__download__overlay--svg">
-										Download SVG
-									</span>
-								</a>
+                @foreach ($business_logo as $logo)
+                    <div class="crt__logo">
+                        <div class="crt__logo__holder">
+                            <div class="crt__logo__image">
+                                <img src='{{asset('').$logo->logo_svg}}' alt='SVG logo'>
+                            </div>
+                            <div class="crt__logo__download">
+                                <div class="crt__logo__download__overlay">
+                                    <a href="{{asset('').'/'.$logo->logo_svg}}" download="{{$logo->business_name}} SVG Logo">
+                                        <span class="crt__logo__download__overlay--svg">
+                                            Download SVG
+                                        </span>
+                                    </a>
 
-								<a href="{{asset('')}}assets/images/portfolio/logo_1.svg" download="SVG Logo">
-									<span class="crt__logo__download__overlay--png">
-										Download PNG
-									</span>
-								</a>
-							</div>
-						</div>
-					</div>
-					<div class="crt__logo__text">
-						<p class="crt__logo__text--primary">9mobile</p>
-						<p class="crt__logo__text--secondary">Telecommunication / ISP</p>
-					</div>
-				</div> <!-- end crt-logo -->
-				<div class="crt__logo">
-					<div class="crt__logo__holder">
-						<div class="crt__logo__image">
-							<img src='{{asset('')}}assets/images/portfolio/logo_1.svg' alt='SVG logo'>
-						</div>
-						<div class="crt__logo__download">
-							<div class="crt__logo__download__overlay">
-								<a href="{{asset('')}}assets/images/portfolio/logo_1.svg" download="SVG Logo">
-									<span class="crt__logo__download__overlay--svg">
-										Download SVG
-									</span>
-								</a>
-
-								<a href="{{asset('')}}assets/images/portfolio/logo_1.svg" download="SVG Logo">
-									<span class="crt__logo__download__overlay--png">
-										Download PNG
-									</span>
-								</a>
-							</div>
-						</div>
-					</div>
-					<div class="crt__logo__text">
-						<p class="crt__logo__text--primary">9mobile</p>
-						<p class="crt__logo__text--secondary">Telecommunication / ISP</p>
-					</div>
-				</div> <!-- end crt-logo -->
-				<div class="crt__logo">
-					<div class="crt__logo__holder">
-						<div class="crt__logo__image">
-							<img src='{{asset('')}}assets/images/portfolio/logo_1.svg' alt='SVG logo'>
-						</div>
-						<div class="crt__logo__download">
-							<div class="crt__logo__download__overlay">
-								<a href="{{asset('')}}assets/images/portfolio/logo_1.svg" download="SVG Logo">
-									<span class="crt__logo__download__overlay--svg">
-										Download SVG
-									</span>
-								</a>
-
-								<a href="{{asset('')}}assets/images/portfolio/logo_1.svg" download="SVG Logo">
-									<span class="crt__logo__download__overlay--png">
-										Download PNG
-									</span>
-								</a>
-							</div>
-						</div>
-					</div>
-					<div class="crt__logo__text">
-						<p class="crt__logo__text--primary">9mobile</p>
-						<p class="crt__logo__text--secondary">Telecommunication / ISP</p>
-					</div>
-				</div> <!-- end crt-logo -->
-			</div>
-			<!-- Footer -->
-			<div class="crt-footer">
-				<div class="crt-footer-content">
-					<div class="crt-footer-sn">
-						<ul>
-							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-							<li><a href="#"><i class="fa fa-youtube"></i></a></li>
-						</ul>
-					</div>
-					<div class="crt-footer-links">
-						<ul>
-							<li><a href="#">© CreativeTeam 2020</a></li>
-						</ul>
-					</div>
-					<div class="crt-clear-fix"></div>
-				</div>
-			</div>
-		</div>
+                                    <a href="{{asset('').'/'.$logo->logo_png}}" download="{{$logo->business_name}} PNG Logo">
+                                        <span class="crt__logo__download__overlay--png">
+                                            Download PNG
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="crt__logo__text">
+                            <p class="crt__logo__text--primary">{{$logo->business_name}}</p>
+                            <p class="crt__logo__text--secondary">{{$logo->activity_area}}</p>
+                        </div>
+                    </div> <!-- end crt-logo -->
+                @endforeach
 
 		<!-- JQuery -->
 		<script src="{{asset('')}}assets/js/jquery-3.5.0.min.js"></script>

@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\SubmissionController;
+use App\Http\Controllers\SubmitLogosController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,10 +16,21 @@ use App\Http\Controllers\SubmissionController;
 
 
 //
-Route::get('/', [HomeController::class,'index'])->name('index');
-Route::get('/submission', [SubmissionController::class,'index'])->name('submission.index');
-Route::get('/test-mail', [SubmissionController::class,'testemail']);
-Route::post('/submission', [SubmissionController::class,'store'])->name('submission.store');
+Route::get('/',[
+    HomeController::class,'index'
+])->name('index');
+
+Route::get('/submission',[
+    SubmitLogosController::class,'index'
+])->name('submission.index');
+
+Route::get('/test-mail',[
+    SubmitLogosController::class,'testemail'
+]);
+
+Route::post('/submission',[
+    SubmitLogosController::class,'store'
+])->name('submission.store');
 
 // Route::get('/test-mail', function () {
 //     return new App\Mail\SubmissionMail([

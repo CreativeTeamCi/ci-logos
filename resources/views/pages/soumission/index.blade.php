@@ -20,7 +20,9 @@
 		<!-- Font awesome -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="{{asset('')}}assets/css/form-control.css">
+        <link rel="stylesheet" href="{{asset('')}}assets/css/form-control.css">
+		<!-- Notyf CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
 		<!-- Fav Icon -->
 		<link rel="icon" href="{{asset('')}}assets/images/logo.png">
 	</head>
@@ -55,7 +57,7 @@
 			<div class="crt-header sticky">
 				<div class="crt-header-content">
 					<div class="crt-header-logo">
-						<a href="index.html">CI Logos</a>
+						<a href="/">CI Logos</a>
 					</div>
 					<div class="crt-search-btn">
 						<i class="material-icons">search</i>
@@ -83,10 +85,11 @@
 					</p>
                     <br>
                     <form id="add-submission" method="POST" enctype="multipart/form-data" method="{{route('submission.store')}}">
+                        @csrf
                         <div class="row">
-                            <div class="col-100 nom">
-                                <label for="nom" class="float-left"><b>Votre nom </b><span class="text-danger">*</span></label>
-                                <input type="text" name="nom" placeholder="Votre nom.." id="nom">
+                            <div class="col-100 name">
+                                <label for="name" class="float-left"><b>Votre nom </b><span class="text-danger">*</span></label>
+                                <input type="text" name="name" placeholder="Votre nom.." id="name">
                             </div>
                         </div>
                         <div class="row">
@@ -105,37 +108,51 @@
                         <div class="row">
                             <div class="col-100 business_name">
                                 <label for="business_name" class="float-left">
-                                    <b>Noms commerciaux et catégorie</b>
+                                    <b>Dénomination sociale de l'entreprise</b>
                                     <span class="text-danger">*</span>
                                 </label>
                                 <input type="text" name="business_name" id="business_name" placeholder="Ex: CreativeTeam (Communauté)">
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-100 file_svg">
-                                <label for="svg_logo" class="float-left">
-                                    <b>SVG Logos</b>
+                            <div class="col-100 activity_areas_id">
+                                <label for="activity_areas_id" class="float-left">
+                                    <b>Secteur d'activité</b>
+                                    <span class="text-danger">*</span>
                                 </label>
-                                <br><br>
-                                <label class="float-left description_input">
-                                    1. Veuillez vous assurer que vos fichiers SVG sont propres et qu'ils n'ont pas de
-                                    formats d'image (par exemple png, jpgs) intégrés
-                                </label>
-                                <input name="file_svg" id="file_svg" type="file">
+                                <select name="activity_areas_id">
+                                    <option value="0">Choisir le secteur</option>
+                                    @foreach ($activity_areas as $activity_area)
+                                        <option value="{{$activity_area->id}}">{{$activity_area->libelle}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-100 file_png">
+                            <div class="col-100 logo_png">
                                 <label for="png_logo" class="float-left">
-                                    <b>PNG Logos</b>
+                                    <b>Logo PNG</b>
                                     <span class="text-danger">*</span>
                                 </label>
-                                <input name="file_png" id="file_png" type="file">
+                                <input name="logo_png" id="logo_png" type="file"  accept=".png">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-100 logo_svg">
+                                <label for="svg_logo" class="float-left">
+                                    <b>Logo SVG</b>
+                                </label>
+                                <br><br>
+                                <input name="logo_svg" id="logo_svg" type="file" accept=".svg">
+                                <small class="float-left description_input">
+                                    Veuillez vous assurer que vos fichiers SVG sont propres et qu'ils n'ont pas de
+                                    formats d'image (par exemple png, jpgs) intégrés
+                                </small><br/><br/>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-100">
-                                <input type="submit" class="soumettre" value="Soumettre" onclick="FormUpload()">
+                                <input type="button" class="soumettre" value="Soumettre" onclick="uploadFileFromAjax('add-submission')">
                             </div>
                         </div>
                     </form>
@@ -166,5 +183,65 @@
         <script src="{{asset('')}}assets/js/script.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+
+        <script>
+            const uploadFileFromAjax = (formId) =>{
+                $.ajax({
+                    type: 'POST',
+                    url: $("#"+formId).attr('action'),
+                    data: new FormData(document.getElementById(formId)),
+                    dataType: 'json',
+                    contentType: false,
+                    cache: false,
+                    processData:false,
+                    beforeSend: function(){
+                        $('.loading').LoadingOverlay("show",{
+                            background  : "rgba(17,17,17,0.5)",
+                            imageColor  : "#FFFFFF"
+                        });
+                    },
+                    success: function(data){
+                        $('.loading').LoadingOverlay("hide");
+                        //Lancer le téléchargement dans le cas d'un fichier
+                        if(data.isFile){
+                            exportAsExcelFile(data.data,data.filename)
+                        }
+                        //Clean Form
+                        $("#"+formId).trigger("reset");
+                        //Deleting errors
+                        $('div').removeClass('has-error');
+                        $('small.text-danger').remove();
+                        //Diplay success message
+                        // Create an instance of Notyf
+                        var notyf = new Notyf({position: {x: 'right',y: 'top'},duration:7000,dismissible:true});
+                        // Display a success notification
+                        notyf.success(data.message);
+                    },
+                    error: function(xhr){ //console.log(response);
+                        //Deleting errors
+                        $('div').removeClass('has-error');
+                        $('small.text-danger').remove();
+                        //Displaying errors
+                        $.each(xhr.responseJSON.message, function(key,value) {
+                            //Affichage des erreurs
+                            $('div.'+key).addClass('has-error');
+                            $('div.'+key).append('<small class="control-label text-danger" for="inputError"><i class="fa fa-times-circle-o"></i>  '+value+'</small>');
+                            // console.log(key+''+value)
+                            // console.log(typeof(xhr.responseJSON.message)=='object')
+                        })
+
+                        // $('.loading').LoadingOverlay("hide");
+                        // if(xhr.responseJSON.message!=undefined){
+                        //     swal({
+                        //         title: 'Echec...',
+                        //         text: xhr.responseJSON.message,
+                        //         type: "error",
+                        //         showConfirmButton: true,
+                        //     })
+                        // }
+                    }
+                });
+            }
+        </script>
 	</body>
 </html>

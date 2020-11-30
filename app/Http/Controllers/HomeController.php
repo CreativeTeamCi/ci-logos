@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\BusinessLogo;
 class HomeController extends Controller
 {
     /**
@@ -13,7 +13,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('pages.accueil.index');
+        $data['business_logo']=BusinessLogo::
+        join('activity_areas','activity_areas.id','business_logos.activity_areas_id')
+        ->select('business_logos.*','activity_areas.libelle as activity_area')
+        ->orderBy('business_name')
+        ->get();
+        return view('pages.accueil.index',$data);
     }
 
     /**

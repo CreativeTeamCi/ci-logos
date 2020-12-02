@@ -8,6 +8,16 @@ $(window).on("load", function() {
     return false;
 });
 
+// Header Sticky JS
+$(window).on('scroll', function() {
+	if ($(this).scrollTop() > 150) {
+        $('.crt-header').addClass("crt-boxed__shadow");
+	}
+	else {
+        $('.crt-header').removeClass("crt-boxed__shadow");
+	}
+});
+
 // Mobile Menu
 $(".crt-header-mobile i").on("click",function(){
 	if($(".crt-menu").css("left") !== "0px"){
@@ -31,20 +41,13 @@ $(".crt-header-search input[type='button']").on("click",function(){
 	$(".crt-header-search").css({"display":"none"});
 });
 
-/* Theme Style
-$("#switch_mode").on("click",function(e){
-    e.preventDefault();
-});
-*/
-
 function switch_mode() {
-    const pathURL = window.location.href;
-	if($("link[title]").attr("href") !== pathURL + "assets/css/light_style.css"){
-		$("link[title]").attr("href", pathURL + "assets/css/light_style.css");
+	if($("link[title]").attr("href") !== "assets/css/light_style.css"){
+		$("link[title]").attr("href", "assets/css/light_style.css");
 		$(this).text("Dark Mode");
 	}
 	else{
-		$("link[title]").attr("href", pathURL + "assets/css/dark_style.css");
+		$("link[title]").attr("href", "assets/css/dark_style.css");
 		$(this).text("Light Mode");
 	}
 }

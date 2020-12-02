@@ -155,7 +155,7 @@
 }
 @media(max-width:767px){
 	.crt-header-search form input[type='text']{
-		
+
 	}
 }
 
@@ -197,11 +197,11 @@
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: flex-start;
-	margin-top: 2%;
+	margin-top: 10%;
 }
 .crt-main::after {
     content: "";
-	flex: auto; 
+	flex: auto;
 }
 
 

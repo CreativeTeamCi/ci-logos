@@ -10,7 +10,7 @@
 		<!-- Main Style of the template -->
 		<link rel="stylesheet" href="{{asset('')}}assets/css/main_style.css">
 		<!-- Theme Style of the template -->
-		<link rel="stylesheet" href="{{asset('')}}assets/css/light_style.css" title="theme_style">
+		<link rel="stylesheet" href="assets/css/light_style.css" title="theme_style">
 		<!-- Landing Page Style -->
 		<link rel="stylesheet" href="{{asset('')}}assets/css/reset_style.css">
 		<!-- Buttons Style -->
@@ -51,7 +51,7 @@
 		<div class="crt-wrapper">
 			<!-- Theme Style -->
 			<div class="crt-theme-style">
-				<a href="javascript:;">Dark Mode</a>
+				<a class="cursor-pointer" onclick="switch_mode()">Dark Mode</a>
 			</div>
 			<!-- Header -->
 			<div class="crt-header sticky">
@@ -75,7 +75,7 @@
 				</div>
 			</div>
 			<!-- Main -->
-			<div class="crt-main">
+			<div class="crt-main submit__section">
 				<div class="crt-404">
 					<h1>Soumissions de logos pour la Côte d'Ivoire</h1>
 					<p>

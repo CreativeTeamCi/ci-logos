@@ -33,5 +33,15 @@ a {
 .sticky {
 	position: fixed;
 	top: 0;
-	width: 100%
+    width: 100%;
+}
+
+.crt-boxed__shadow {
+    padding: 10px;
+    box-shadow: 2px 2px #888888;
+    background: #fff;
+}
+
+.submit__section {
+	margin-top: 2% !important;
 }

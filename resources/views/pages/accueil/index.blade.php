@@ -10,7 +10,7 @@
 		<!-- Main Style of the template -->
 		<link rel="stylesheet" href="{{asset('')}}assets/css/main_style.css">
 		<!-- Theme Style of the template -->
-		<link rel="stylesheet" href="{{asset('')}}assets/css/light_style.css" title="theme_style">
+		<link rel="stylesheet" href="assets/css/light_style.css" title="theme_style">
 		<!-- Landing Page Style -->
 		<link rel="stylesheet" href="{{asset('')}}assets/css/reset_style.css">
 		<!-- Buttons Style -->
@@ -122,7 +122,7 @@
                         </div>
                     </div> <!-- end crt-logo -->
                 @endforeach
-
+            </div>
 		<!-- JQuery -->
 		<script src="{{asset('')}}assets/js/jquery-3.5.0.min.js"></script>
 		<!-- Main Script -->

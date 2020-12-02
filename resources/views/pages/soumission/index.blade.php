@@ -59,19 +59,6 @@
 					<div class="crt-header-logo">
 						<a href="/">CI Logos</a>
 					</div>
-					<div class="crt-search-btn">
-						<i class="material-icons">search</i>
-					</div>
-					<div class="crt-header-search">
-						<form>
-							<label>
-								<input type="text" name="keyword" placeholder="Rechercher..." />
-							</label>
-							<input type="submit" name="submit" value="search" class="material-icons" />
-							<input type="button" name="close" value="close" class="material-icons" />
-						</form>
-					</div>
-					<div class="crt-clear-fix"></div>
 				</div>
 			</div>
 			<!-- Main -->

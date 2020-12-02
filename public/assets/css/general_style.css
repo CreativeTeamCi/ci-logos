@@ -20,6 +20,10 @@ a {
 	transition:all ease 0.3s;
 }
 
+.cursor-pointer {
+    cursor: pointer;
+}
+
 /* Set a clear fix */
 .crt-clear-fix {
 	clear:both;

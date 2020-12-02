@@ -31,17 +31,23 @@ $(".crt-header-search input[type='button']").on("click",function(){
 	$(".crt-header-search").css({"display":"none"});
 });
 
-// Theme Style
-$(".crt-theme-style a").on("click",function(){
-	if($("link[title]").attr("href") !== "assets/css/light_style.css"){
-		$("link[title]").attr("href","assets/css/light_style.css");
+/* Theme Style
+$("#switch_mode").on("click",function(e){
+    e.preventDefault();
+});
+*/
+
+function switch_mode() {
+    const pathURL = window.location.href;
+	if($("link[title]").attr("href") !== pathURL + "assets/css/light_style.css"){
+		$("link[title]").attr("href", pathURL + "assets/css/light_style.css");
 		$(this).text("Dark Mode");
 	}
 	else{
-		$("link[title]").attr("href","assets/css/dark_style.css");
+		$("link[title]").attr("href", pathURL + "assets/css/dark_style.css");
 		$(this).text("Light Mode");
 	}
-});
+}
 
 // Logo submission
 function logo_submit() {

@@ -357,7 +357,6 @@
 .crt__logo__download__overlay--svg:hover,
 .crt__logo__download__overlay--png:hover {
 	background-color: #fff;
-	transform: scale(1.1);
 }
 
 /* 404 Page */

@@ -70,3 +70,10 @@ body{
 	color:#FFFFFF;
 	transition:all ease 0.3s;
 }
+
+.crt-boxed__shadow {
+    padding: 10px;
+    box-shadow: 2px 2px #888888;
+    background: #242424;
+    color: #fff;
+}

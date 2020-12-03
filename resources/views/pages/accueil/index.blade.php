@@ -46,7 +46,7 @@
 		<div class="crt-wrapper">
 			<!-- Theme Style -->
 			<div class="crt-theme-style">
-				<a class="cursor-pointer" onclick="switch_mode()">
+				<a class="cursor-pointer" href="javascript:;">
                     Dark Mode
                 </a>
 			</div>

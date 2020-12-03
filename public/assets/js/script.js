@@ -1,12 +1,24 @@
 // Strict Mode
 "use strict";
-
+checkActiveMode();
 // Window Load Event
 $(window).on("load", function() {
 	// Loader Fade Out
     $(".crt-loader").fadeOut();
     return false;
 });
+
+function checkActiveMode() {
+    // Dark/Light mode condition
+    const modeActivated = localStorage.getItem('mode_activated');
+    if (modeActivated === 'darkMode') {
+        $("link[title]").attr("href","assets/css/dark_style.css");
+        $('.crt-theme-style a').text("Light Mode");
+    } else {
+        $("link[title]").attr("href","assets/css/light_style.css");
+        $('.crt-theme-style a').text("Dark Mode");
+    }
+}
 
 // Header Sticky JS
 $(window).on('scroll', function() {
@@ -19,12 +31,11 @@ $(window).on('scroll', function() {
 });
 
 // Mobile Menu
-$(".crt-header-mobile i").on("click",function(){
-	if($(".crt-menu").css("left") !== "0px"){
+$(".crt-header-mobile i").on("click",function() {
+	if ($(".crt-menu").css("left") !== "0px") {
 		$(".crt-menu").css("left","0px");
 		$(this).text("close");
-	}
-	else{
+	} else {
 		$(".crt-menu").css("left","-100%");
 		$(this).text("menu");
 	}
@@ -41,16 +52,23 @@ $(".crt-header-search input[type='button']").on("click",function(){
 	$(".crt-header-search").css({"display":"none"});
 });
 
-function switch_mode() {
-	if($("link[title]").attr("href") !== "assets/css/light_style.css"){
-		$("link[title]").attr("href", "assets/css/light_style.css");
-		$(this).text("Dark Mode");
+// Swicth Mode
+$(".crt-theme-style a").on("click",function(){
+	if ($("link[title]").attr("href") !== "assets/css/light_style.css") {
+		$("link[title]").attr("href","assets/css/light_style.css");
+        $(this).text("Dark Mode");
+        localStorage.setItem('mode_activated', 'lightMode');
 	}
-	else{
-		$("link[title]").attr("href", "assets/css/dark_style.css");
-		$(this).text("Light Mode");
+	else {
+		$("link[title]").attr("href","assets/css/dark_style.css");
+        $(this).text("Light Mode");
+        localStorage.setItem('mode_activated', 'darkMode');
 	}
-}
+});
+
+
+// Search array
+
 
 // Logo submission
 function logo_submit() {

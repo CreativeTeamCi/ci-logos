@@ -34,6 +34,7 @@ a {
 	position: fixed;
 	top: 0;
     width: 100%;
+    z-index: 1000;
 }
 
 .crt-boxed__shadow {
@@ -43,5 +44,28 @@ a {
 }
 
 .submit__section {
-	margin-top: 2% !important;
+    margin-top: 2% !important;
+    z-index: -1000;
 }
+
+/* Search item */
+.mark {
+    background-color: #d7ffe7 !important
+}
+
+.mark .gsearch{
+    font-size: 20px
+}
+
+.unmark {
+    background-color: #e8e8e8 !important
+}
+.unmark .gsearch{
+    font-size: 10px
+}
+
+.si{
+    font-weight: bold;
+    color: red;
+}
+

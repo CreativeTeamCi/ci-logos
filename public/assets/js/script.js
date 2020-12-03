@@ -67,8 +67,15 @@ $(".crt-theme-style a").on("click",function(){
 });
 
 
-// Search array
-
+// Search item
+$('#crt__search').jsLocalSearch({
+    "searchinput": ".crt__search-item",
+    "container": "contsearch3",
+    "containersearch": "gsearch",
+    "action": "Show",
+    "html_search": true,
+    "mark_text": "si"
+});
 
 // Logo submission
 function logo_submit() {

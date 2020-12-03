@@ -107,7 +107,7 @@
 .crt-search-btn{
 	position:absolute;
 	z-index:2;
-	top:34px;
+	bottom:25px;
 	right:0px;
 	padding:0px 12px;
 }
@@ -116,12 +116,13 @@
 	font-size:30px;
 	cursor:pointer;
 }
-.crt-header-search{
+.crt-header-search {
 	position:absolute;
 	z-index:3;
 	left:0px;
 	top:0px;
-	display:none;
+    display:none;
+    background: none;
 	width:100%;
 	height:100%;
 }
@@ -155,8 +156,7 @@
 }
 @media(max-width:767px){
 	.crt-header-search form input[type='text']{
-
-	}
+    }
 }
 
 /* Menu */
@@ -197,7 +197,7 @@
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: flex-start;
-	margin-top: 10%;
+    margin-top: 10%;
 }
 .crt-main::after {
     content: "";
@@ -239,7 +239,7 @@
 	box-sizing: border-box;
 	width: 25%;
 	border: 20px solid transparent;
-	margin-bottom: 8%;
+    margin-bottom: 8%;
 }
 
 .crt__logo__holder {

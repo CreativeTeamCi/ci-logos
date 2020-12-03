@@ -62,9 +62,8 @@
 					<div class="crt-header-search">
 						<form>
 							<label>
-								<input type="text" name="keyword" placeholder="Rechercher..." />
+								<input type="text" class="crt__search-item" name="keyword" placeholder="Rechercher..." />
 							</label>
-							<input type="submit" name="submit" value="search" class="material-icons" />
 							<input type="button" name="close" value="close" class="material-icons" />
 						</form>
 					</div>
@@ -93,9 +92,8 @@
                         </button>
                     </a>
                 </div>
-
                 @foreach ($business_logo as $logo)
-                    <div class="crt__logo">
+                    <div class="crt__logo contsearch3">
                         <div class="crt__logo__holder">
                             <div class="crt__logo__image">
                                 <img src='{{asset('').$logo->logo_svg}}' alt='SVG logo'>
@@ -117,14 +115,34 @@
                             </div>
                         </div>
                         <div class="crt__logo__text">
-                            <p class="crt__logo__text--primary">{{$logo->business_name}}</p>
-                            <p class="crt__logo__text--secondary">{{$logo->activity_area}}</p>
+                            <p class="crt__logo__text--primary gsearch">{{$logo->business_name}}</p>
+                            <p class="crt__logo__text--secondary gsearch">{{$logo->activity_area}}</p>
                         </div>
                     </div> <!-- end crt-logo -->
+                    <div id="crt__search"></div>
                 @endforeach
             </div>
+            <!-- Footer -->
+			<div class="crt-footer">
+				<div class="crt-footer-content">
+					<div class="crt-footer-sn">
+						<ul>
+							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="#"><i class="fa fa-youtube"></i></a></li>
+						</ul>
+					</div>
+					<div class="crt-footer-links">
+						<ul>
+							<li><a href="#">© CreativeTeam 2020 </a></li>
+						</ul>
+					</div>
+					<div class="crt-clear-fix"></div>
+				</div>
+			</div>
 		<!-- JQuery -->
-		<script src="{{asset('')}}assets/js/jquery-3.5.0.min.js"></script>
+        <script src="{{asset('')}}assets/js/jquery-3.5.0.min.js"></script>
+        <!-- Search Script -->
+		<script src="{{asset('')}}assets/js/search.js"></script>
 		<!-- Main Script -->
 		<script src="{{asset('')}}assets/js/script.js"></script>
 	</body>

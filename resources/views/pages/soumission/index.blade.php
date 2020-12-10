@@ -24,7 +24,9 @@
 		<!-- Notyf CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
 		<!-- Fav Icon -->
-		<link rel="icon" href="{{asset('')}}assets/images/logo.png">
+        <link rel="icon" href="{{asset('')}}assets/images/logo.png">
+        <!-- Progress Bar -->
+        <link rel='stylesheet' href='https://unpkg.com/nprogress@0.2.0/nprogress.css'/>
 	</head>
 	<body>
 
@@ -104,6 +106,15 @@
                             </div>
                         </div>
                         <div class="row">
+                            <div class="col-100 url">
+                                <label for="business_name" class="float-left">
+                                    <b>Site web de l'entreprise</b>
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input type="text" name="url" id="url" placeholder="Ex: https://creative-team.ci">
+                            </div>
+                        </div>
+                        <div class="row">
                             <div class="col-100 activity_areas_id">
                                 <label for="activity_areas_id" class="float-left">
                                     <b>Secteur d'activité</b>
@@ -172,6 +183,8 @@
         <script src="{{asset('')}}assets/js/script.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+        <!-- Progress Bar -->
+        <script src='https://unpkg.com/nprogress@0.2.0/nprogress.js'></script>
 
         <script>
             const uploadFileFromAjax = (formId) =>{
@@ -184,13 +197,11 @@
                     cache: false,
                     processData:false,
                     beforeSend: function(){
-                        $('.loading').LoadingOverlay("show",{
-                            background  : "rgba(17,17,17,0.5)",
-                            imageColor  : "#FFFFFF"
-                        });
+                        NProgress.start();
                     },
                     success: function(data){
-                        $('.loading').LoadingOverlay("hide");
+                        NProgress.done();
+                        NProgress.remove();
                         //Lancer le téléchargement dans le cas d'un fichier
                         if(data.isFile){
                             exportAsExcelFile(data.data,data.filename)
@@ -206,7 +217,10 @@
                         // Display a success notification
                         notyf.success(data.message);
                     },
-                    error: function(xhr){ //console.log(response);
+                    error: function(xhr){
+                        NProgress.done();
+                        // NProgress.remove();
+                         //console.log(response);
                         //Deleting errors
                         $('div').removeClass('has-error');
                         $('small.text-danger').remove();

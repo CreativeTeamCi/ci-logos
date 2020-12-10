@@ -15,6 +15,7 @@ class Submission extends Model
         'business_name',
         'file_svg',
         'file_png',
-        'status'
+        'status',
+        'url'
     ];
 }

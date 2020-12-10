@@ -20,7 +20,8 @@
 		<!-- Font awesome -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<!-- Fav Icon -->
-		<link rel="icon" href="{{asset('')}}assets/images/logo.png">
+        <link rel="icon" href="{{asset('')}}assets/images/logo.png">
+
 	</head>
 	<body>
 		<!-- Loader -->
@@ -96,15 +97,17 @@
                     <div class="crt__logo contsearch3">
                         <div class="crt__logo__holder">
                             <div class="crt__logo__image">
-                                <img src='{{asset('').$logo->logo_svg}}' alt='SVG logo'>
+                                <img src='{{asset('').$logo->logo_png}}' alt='PNG logo'>
                             </div>
                             <div class="crt__logo__download">
                                 <div class="crt__logo__download__overlay">
-                                    <a href="{{asset('').'/'.$logo->logo_svg}}" download="{{$logo->business_name}} SVG Logo">
-                                        <span class="crt__logo__download__overlay--svg">
-                                            Download SVG
-                                        </span>
-                                    </a>
+                                    @if ($logo->logo_svg)
+                                        <a href="{{asset('').'/'.$logo->logo_svg}}" download="{{$logo->business_name}} SVG Logo">
+                                            <span class="crt__logo__download__overlay--svg">
+                                                Download SVG
+                                            </span>
+                                        </a>
+                                    @endif
 
                                     <a href="{{asset('').'/'.$logo->logo_png}}" download="{{$logo->business_name}} PNG Logo">
                                         <span class="crt__logo__download__overlay--png">
@@ -115,7 +118,13 @@
                             </div>
                         </div>
                         <div class="crt__logo__text">
-                            <p class="crt__logo__text--primary gsearch">{{$logo->business_name}}</p>
+                            <p class="crt__logo__text--primary gsearch">
+                                @if ($logo->url)
+                                    <a href="{{$logo->url}}" target="_blank">{{$logo->business_name}}</a>
+                                @else
+                                    {{$logo->business_name}}
+                                @endif
+                            </p>
                             <p class="crt__logo__text--secondary gsearch">{{$logo->activity_area}}</p>
                         </div>
                     </div> <!-- end crt-logo -->

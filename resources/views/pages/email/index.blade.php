@@ -352,7 +352,7 @@ ul.social li{
             	<tr>
             		<td>
             			<div class="text" style="padding: 0 2.5em; text-align: center;">
-            				<h2>Felicitations Alhassane votre logo a été uploadé</h2>
+            				<h2>Felicitations {{$submission['name']}} votre logo a été uploadé</h2>
             				<h3>votre réquête sera traité. Nous vous enverrons un mail de validation ou de rejet de votre logo après traitement</h3>
             				{{-- <p><a href="#" class="btn btn-primary">Yes! Subscribe Me</a></p> --}}
             			</div>

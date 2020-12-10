@@ -17,5 +17,6 @@ class BusinessLogo extends Model
         'logo_png',
         'logo_svg',
         'status',
+        'url'
     ];
 }

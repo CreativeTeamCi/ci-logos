@@ -19,8 +19,9 @@ class CreateBusinessLogosTable extends Migration
             $table->string('name');
             $table->string('business_name');
             $table->string('email');
+            $table->string('url')->nullable();
             $table->string('logo_png');
-            $table->string('logo_svg');
+            $table->string('logo_svg')->nullable();
             $table->string('status');
             $table->timestamps();
         });

@@ -29,7 +29,7 @@ class SubmissionMail extends Mailable
      */
     public function build()
     {
-        return $this->from('alhassanesoro96@gmail.com')
+        return $this->from('sana.michael120@gmail.com')
         ->view('pages.email.index');
     }
 }

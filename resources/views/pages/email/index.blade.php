@@ -384,9 +384,10 @@ ul.social li{
                       <td style="text-align: left; padding-left: 5px; padding-right: 5px;">
                       	<h3 class="heading">Contacts</h3>
                       	<ul>
-					                <li><span class="text">+225 59 97 15 82</span></a></li>
-					                <li><span class="text">+225 59 97 15 82</span></a></li>
-					              </ul>
+                            <li><span class="text">+225 07 89 30 10 51</span></a></li>
+                            <li><span class="text">+225 07 49 49 98 49</span></a></li>
+                            <li><span class="text">+225 07 59 97 15 82</span></a></li>
+                        </ul>
                       </td>
                     </tr>
                   </table>
@@ -397,9 +398,9 @@ ul.social li{
                       <td style="text-align: left; padding-left: 10px;">
                       	<h3 class="heading">Lien Important</h3>
                       	<ul>
-					                <li><a href="#">Acceuil</a></li>
-					                <li><a href="#">Soumettre un logo</a></li>
-					              </ul>
+                            <li><a href="http://ci-logos.com/">Acceuil</a></li>
+                            <li><a href="http://ci-logos.com/submit-logo">Soumettre un logo</a></li>
+                        </ul>
                       </td>
                     </tr>
                   </table>
@@ -410,7 +411,7 @@ ul.social li{
         </tr><!-- end: tr -->
         <tr>
           <td class="bg_light" style="text-align: center;">
-          	<p><a href="#" style="color: rgba(0,0,0,.8);">© CreativeTeam 2020</a></p>
+          	<p><a href="http://creative-team.ci/" style="color: rgba(0,0,0,.8);">© CreativeTeam 2020</a></p>
           </td>
         </tr>
       </table>

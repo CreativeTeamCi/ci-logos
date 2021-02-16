@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\SubmissionMail;
 use App\Models\ActivityArea;
 use App\Models\BusinessLogo;
+use App\Models\FailedMail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -97,8 +98,27 @@ class SubmitLogosController extends Controller
         ]);
 
         // Sending Email
-        // Mail::to($request->email)
-        // ->send(new SubmissionMail($businees_logo->toArray()));
+        try {
+            Mail::to($request->email)
+            ->send(new SubmissionMail($businees_logo->toArray()));
+            // - Save repport
+            FailedMail::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'business_name' => $request->business_name,
+                'comment' => null,
+                'status' => 'failed'
+            ]);
+        } catch (\Exception $e) {
+            // - Save repport
+            FailedMail::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'business_name' => $request->business_name,
+                'comment' => $e->getMessage(),
+                'status' => 'failed'
+            ]);
+        }
 
         return response()->json(['message'=>"Votre logo a été soumis avec succès."],200);
     }

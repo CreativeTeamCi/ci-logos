@@ -1,79 +1,83 @@
 body{
-	background:#242424;
-	color:#FFFFFF;
-	transition:all ease 0.3s;
+	background:#242424 !important;
+	color:#FFFFFF !important;
+	transition:all ease 0.3s !important;
 }
 .crt-background-item{
-	border-right:1px solid #343434;
-	transition:all ease 0.3s;
+	border-right:1px solid #343434 !important;
+	transition:all ease 0.3s !important;
 }
 .crt__logo__download__overlay a {
-	color: #000;
-	transition: all .5s ease-in-out;
-	font-size: 100%;
+	color: #000 !important;
+	transition: all .5s ease-in-out !important;
+	font-size: 100% !important;
 }
 .crt-background-item:nth-child(2n+1){
-	background:#252525;
+	background:#252525 !important;
 }
 .crt-theme-style a{
-	color:#FFFFFF;
-	transition:all ease 0.3s;
+	color:#FFFFFF !important;
+	transition:all ease 0.3s !important;
 }
 .crt-header-logo a{
-	color:#FFFFFF;
-	transition:all ease 0.3s;
+	color:#FFFFFF !important;
+	transition:all ease 0.3s !important;
 }
 .crt-header-search form input[type='text']{
-	color:#FFFFFF;
-	transition:all ease 0.3s;
+	color:#FFFFFF !important;
+	transition:all ease 0.3s !important;
 }
 .crt-header-search form input[type='submit']{
-	color:#FFFFFF;
-	transition:all ease 0.3s;
+	color:#FFFFFF !important;
+	transition:all ease 0.3s !important;
 }
 .crt-header-search form input[type='button']{
-	color:#FFFFFF;
-	transition:all ease 0.3s;
+	color:#FFFFFF !important;
+	transition:all ease 0.3s !important;
 }
 .crt-menu-list ul li a{
-	color:#BEBEBE;
-	transition:all ease 0.3s;
+	color:#BEBEBE !important;
+	transition:all ease 0.3s !important;
 }
 .crt-menu-list ul li a:hover{
-	color:#FFFFFF;
-	transition:all ease 0.3s;
+	color:#FFFFFF !important;
+	transition:all ease 0.3s !important;
 }
 .crt-menu-list ul li a.active{
-	color:#FFFFFF;
-	transition:all ease 0.3s;
+	color:#FFFFFF !important;
+	transition:all ease 0.3s !important;
 }
 .crt-post-title h3 a{
-	color:#FFFFFF;
-	transition:all ease 0.3s;
+	color:#FFFFFF !important;
+	transition:all ease 0.3s !important;
 }
 .crt-post-title span a{
-	color:#848484;
-	transition:all ease 0.3s;
+	color:#848484 !important;
+	transition:all ease 0.3s !important;
 }
 .crt-navigation{
-	transition:all ease 0.3s;
+	transition:all ease 0.3s !important;
 }
 .crt-navigation a{
-	color:#FFFFFF;
-	transition:all ease 0.3s;
+	color:#FFFFFF !important;
+	transition:all ease 0.3s !important;
 }
 .crt-footer-sn ul li a{
-	color:#FFFFFF;
-	transition:all ease 0.3s;
+	color:#FFFFFF !important;
+	transition:all ease 0.3s !important;
 }
 .crt-footer-links ul li a{
-	color:#FFFFFF;
-	transition:all ease 0.3s;
+	color:#FFFFFF !important;
+	transition:all ease 0.3s !important;
 }
 
 .crt-boxed__shadow {
-    padding: 10px;
-    box-shadow: 2px 2px #888888;
-    background: #242424;
-    color: #fff;
+    padding: 10px !important;
+    box-shadow: 2px 2px #888888 !important;
+    background: #242424 !important;
+    color: #fff !important;
+}
+
+input[type=button] {
+	border: 2px solid #FFF !important;
 }

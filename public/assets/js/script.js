@@ -13,10 +13,10 @@ function checkActiveMode() {
     const modeActivated = localStorage.getItem('mode_activated');
     if (modeActivated === 'darkMode') {
         $("link[title]").attr("href","assets/css/dark_style.css");
-        $('.crt-theme-style a').text("Light Mode");
+        // $('.crt-theme-style a').text("Light Mode");
     } else {
         $("link[title]").attr("href","assets/css/light_style.css");
-        $('.crt-theme-style a').text("Dark Mode");
+        // $('.crt-theme-style a').text("Dark Mode");
     }
 }
 

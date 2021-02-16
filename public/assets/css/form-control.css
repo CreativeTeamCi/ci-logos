@@ -22,7 +22,7 @@ label {
 }
 
 input[type=button] {
-  background-color: #4CAF50;
+  background-color: #242424;
   color: white;
   padding: 12px 20px;
   border: none;
@@ -32,7 +32,9 @@ input[type=button] {
 }
 
 input[type=button]:hover {
-  background-color: #45a049;
+  color: #000;
+  border: 2px solid #000;
+  background-color: #FFF;
 }
 
 .container {

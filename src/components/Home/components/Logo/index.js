@@ -24,17 +24,20 @@ const Logo = ({data}) => {
                 </div>
                 <div className="crt__logo__download">
                     <div className="crt__logo__download__overlay">
-                        <a href={logo_svg} download={`${business_name} SVG Logo`}>
-                            <span className="crt__logo__download__overlay--svg">
-                                Download SVG
-                            </span>
-                        </a>
-
                         <a href={logo_png} download={`${business_name}  PNG Logo`}>
                             <span className="crt__logo__download__overlay--png">
                                 Download PNG
                             </span>
                         </a>
+                        {
+                            logo_svg!=='' || logo_svg!=null && (
+                                <a href={logo_svg} download={`${business_name} SVG Logo`}>
+                                    <span className="crt__logo__download__overlay--svg">
+                                        Download SVG
+                                    </span>
+                                </a>
+                            )
+                        }
                     </div>
                 </div>
             </div>

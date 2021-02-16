@@ -90,6 +90,12 @@
 }
 
 /* Logo */
+input[value=close] {
+	color: black !important;
+}
+input[value=close]:hover {
+	border: none !important;
+}
 .crt-header-logo{
 	position:relative;
 	z-index:4;

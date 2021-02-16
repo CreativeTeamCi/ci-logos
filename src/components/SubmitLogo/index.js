@@ -1,11 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+import Header from '../Header'
+import DarkLightBtn from '../DarkLightBtn'
+import Footer from '../Footer'
 import axios from 'axios'
 import {Notyf} from 'notyf'
 
 const SubmitLogo = () => {
     const baseUrl = 'http://ci_logo.com.test/api'
-    const formRef = useRef()
     // Create an instance of Notyf
     const notyf = new Notyf({duration: 5000, position: {x: 'right',y: 'top'}})
     const [activitiesArea, setActivitiesArea] = useState([])
@@ -36,7 +37,7 @@ const SubmitLogo = () => {
         const form = new FormData()
         Object.keys(myForm).map(name=>{
             form.append(name,myForm[name])
-            console.log('name', name)
+            // console.log('name', name)
         })
         // console.log('MyForm', myForm,form)
         // - Soumission du formulaire
@@ -46,6 +47,8 @@ const SubmitLogo = () => {
             notyf.dismissAll();
             notyf.success(response.data.message);
             setMyForm(initialForm)
+            document.querySelector("input[name=logo_png]").value = ''
+            document.querySelector("input[name=logo_svg]").value = ''
             // console.log('response', response)
         })
         .catch(function (error) {
@@ -67,7 +70,8 @@ const SubmitLogo = () => {
                 })
             } else {
                 notyf.dismissAll();
-                notyf.error(errorsMessages);
+                notyf.error('Une erreur est survenue, merci de réessayer plus tard.');
+                console.log('errorsMessages', errorsMessages)
             }
         });
     }
@@ -127,29 +131,14 @@ const SubmitLogo = () => {
                 <div className="crt-background-item"></div>
             </div>
             <div className="crt-wrapper">
-                <div className="crt-theme-style">
+                {/* <div className="crt-theme-style">
                     <a href="javascript:;">Dark Mode</a>
-                </div>
-                <div className="crt-header sticky">
-                    <div className="crt-header-content">
-                        <div className="crt-header-logo">
-                            <Link to='/'>CI Logos</Link>
-                        </div>
-                        <div className="crt-search-btn">
-                            <i className="material-icons">search</i>
-                        </div>
-                        <div className="crt-header-search">
-                            <form>
-                                <label style={{width:'100%'}}>
-                                    <input type="text" name="keyword" placeholder="Rechercher..." />
-                                </label>
-                                <input type="submit" name="submit" value="search" className="material-icons" />
-                                <input type="button" name="close" value="close" className="material-icons" />
-                            </form>
-                        </div>
-                        <div className="crt-clear-fix"></div>
-                    </div>
-                </div>
+                </div> */}
+
+                <DarkLightBtn/>
+
+                <Header/>
+
                 <div className="crt-main">
                     <div className="crt-404">
                         <h1>Soumissions de logos pour la Côte d'Ivoire</h1>
@@ -163,7 +152,7 @@ const SubmitLogo = () => {
                             <div className="row">
                                 <div className="col-100 name">
                                     <label for="name" className="float-left"><b>Votre nom </b><span className="text-danger">*</span></label>
-                                    <input type="text" name="name" placeholder="Votre nom.." id="name" value={myForm.name} onChange={(e)=>handleChangeText(e)}/>
+                                    <input type="text" className='form-control' name="name" placeholder="Votre nom.." id="name" value={myForm.name} onChange={(e)=>handleChangeText(e)}/>
                                 </div>
                             </div>
                             <div className="row">
@@ -172,7 +161,7 @@ const SubmitLogo = () => {
                                         <b>Votre email</b>
                                         <span className="text-danger">*</span>
                                     </label>
-                                    <input type="text" name="email" placeholder="abc@email.com" id="email" value={myForm.email} onChange={(e)=>handleChangeText(e)}/>
+                                    <input type="text" className='form-control' name="email" placeholder="abc@email.com" id="email" value={myForm.email} onChange={(e)=>handleChangeText(e)}/>
                                     <small className="float-left description_input">
                                         Nous en avons besoin pour pouvoir assurer un suivi avec vous au cas où des améliorations seraient recommandées
                                         et aussi pour que nous puissions vous faire savoir quand vos logos sont en ligne sur le site.
@@ -180,12 +169,13 @@ const SubmitLogo = () => {
                                 </div>
                             </div>
                             <div className="row">
-                                <div className="col-100 business_name">
+                                <div className="col-100 business_name business_name_slug">
                                     <label for="business_name" className="float-left">
                                         <b>Dénomination sociale de l'entreprise</b>
                                         <span className="text-danger">*</span>
                                     </label>
-                                    <input type="text" name="business_name" id="business_name" placeholder="Ex: CreativeTeam (Communauté)" value={myForm.business_name} onChange={(e)=>handleChangeText(e)}/>
+                                    <input type="text" className='form-control' name="business_name" id="business_name" placeholder="Ex: CreativeTeam (Communauté)" value={myForm.business_name} onChange={(e)=>handleChangeText(e)}/>
+                                    <input type="hidden" className='form-control' name="business_name_slug"/>
                                 </div>
                             </div>
                             <div class="row">
@@ -194,7 +184,7 @@ const SubmitLogo = () => {
                                         <b>Site web de l'entreprise</b>
                                         <span class="text-danger">*</span>
                                     </label>
-                                    <input type="text" name="url" id="url" placeholder="Ex: https://creative-team.ci" value={myForm.url} onChange={(e)=>handleChangeText(e)}/>
+                                    <input type="text" className='form-control' name="url" id="url" placeholder="Ex: https://creative-team.ci" value={myForm.url} onChange={(e)=>handleChangeText(e)}/>
                                 </div>
                             </div>
                             <div className="row">
@@ -203,7 +193,7 @@ const SubmitLogo = () => {
                                         <b>Secteur d'activité</b>
                                         <span className="text-danger">*</span>
                                     </label>
-                                    <select name="activity_areas_id" onChange={(e)=>handleChangeText(e)}>
+                                    <select name="activity_areas_id" className='form-control' onChange={(e)=>handleChangeText(e)}>
                                         <option value="0">Choisir le secteur</option>
                                         {
                                             activitiesArea.map(activity=>{
@@ -219,7 +209,7 @@ const SubmitLogo = () => {
                                         <b>Logo PNG</b>
                                         <span className="text-danger">*</span>
                                     </label>
-                                    <input name="logo_png" id="logo_png" type="file"  accept=".png" onChange={(e)=>handleChangeFile(e)}/>
+                                    <input name="logo_png" id="logo_png" type="file" style={{height:37}} className='form-control'  accept=".png" onChange={(e)=>handleChangeFile(e)}/>
                                 </div>
                             </div>
                             <div className="row">
@@ -228,8 +218,8 @@ const SubmitLogo = () => {
                                         <b>Logo SVG</b>
                                     </label>
                                     <br/><br/>
-                                    <input name="logo_svg" id="logo_svg" type="file" accept=".svg" onChange={(e)=>handleChangeFile(e)}/>
-                                    <small className="float-left description_input">
+                                    <input name="logo_svg" id="logo_svg" type="file" style={{height:38}} className='form-control' accept=".svg" onChange={(e)=>handleChangeFile(e)}/>
+                                    <small className="description_input">
                                         Veuillez vous assurer que vos fichiers SVG sont propres et qu'ils n'ont pas de
                                         formats d'image (par exemple png, jpgs) intégrés
                                     </small><br/><br/>
@@ -243,22 +233,9 @@ const SubmitLogo = () => {
                         </form>
                     </div>
                 </div>
-                <div className="crt-footer">
-                    <div className="crt-footer-content">
-                        <div className="crt-footer-sn">
-                            <ul>
-                                <li><a href="#"><i className="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i className="fa fa-youtube"></i></a></li>
-                            </ul>
-                        </div>
-                        <div className="crt-footer-links">
-                            <ul>
-                                <li><a href="#">© CreativeTeam 2020 </a></li>
-                            </ul>
-                        </div>
-                        <div className="crt-clear-fix"></div>
-                    </div>
-                </div>
+
+                <Footer/>
+
             </div>
         </>
     );

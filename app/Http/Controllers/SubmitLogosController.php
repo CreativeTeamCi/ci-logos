@@ -24,6 +24,21 @@ class SubmitLogosController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function activitiesArea()
+    {
+        $data= ActivityArea::orderBy('libelle','asc')->get();
+        return response()->json([
+            'error'=>false,
+            'message'=>'Liste des logos recherchés.',
+            'data'=>$data,
+        ]);
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -31,22 +46,26 @@ class SubmitLogosController extends Controller
      */
     public function store(Request $request)
     {
+        $request['business_name_slug'] = Str::slug($request->business_name);
         $validator=Validator::make($request->all(),
             [
                 'name'  =>'required|string',
                 'email'  =>'required|email',
-                'business_name'  =>'required|string|unique:business_logos,business_name',
+                // 'business_name'  =>'required|string',
+                'business_name_slug'  =>'required|string|unique:business_logos,business_name_slug',
                 'activity_areas_id'  =>'required|integer|exists:activity_areas,id',
-                'url'  =>'required|url',
+                // 'url'  =>'required|url',
                 // 'logo_svg'  =>'required|file|mimes:svg',
                 'logo_png'  =>'required|file|mimes:png'
             ],
             [
                 'name.*'  =>"Veuillez saisir votre nom",
                 'email.*'  =>"L'adresse email saise est invalide",
-                'business_name.required'  =>"Veuillez saisir un nom valide",
-                'business_name.string'  =>"Veuillez saisir un nom valide",
-                'business_name.unique'  =>"Ce nom existe déjà",
+                // 'business_name.required'  =>"Veuillez saisir un nom valide",
+                // 'business_name.string'  =>"Veuillez saisir un nom valide",
+                'business_name_slug.required'  =>"Veuillez saisir un nom valide",
+                'business_name_slug.string'  =>"Veuillez saisir un nom valide",
+                'business_name_slug.unique'  =>"Cette dénomination existe déjà",
                 'activity_areas_id.*'  =>"Veuillez choisir le secteur d'activité svp",
                 'url.*'  =>"Cette url n'existe pas",
                 'logo_svg.*'  =>"Veuillez télécharger un fichier au format svg",
@@ -54,30 +73,32 @@ class SubmitLogosController extends Controller
             ]
         );
 
+        $validator->sometimes('url',['required','url'],function() use ($request){
+            return !is_null($request->logo_svg);
+        });
         $validator->sometimes('logo_svg',['required','file','mimes:svg'],function() use ($request){
-
             return !is_null($request->logo_svg);
         });
         $validator->sometimes('url',['required','url'],function() use ($request){
-
             return !is_null($request->url);
         });
         if($validator->fails()) return $this->sendError($validator->errors()->messages(), null);
         $request['activity_areas']=ActivityArea::find($request->activity_areas_id)->slug;
         $businees_logo = BusinessLogo::create([
-            'name'              =>$request->name,
-            'email'             =>$request->email,
-            'business_name'     =>$request->business_name,
-            'activity_areas_id' =>$request->activity_areas_id,
-            'url'               =>$request->url,
-            'logo_png'          =>$this->uploadPNGLogo($request),
-            'logo_svg'          =>$this->uploadSVGLogo($request),
-            'status'            =>'soumis',
+            'name'                  =>$request->name,
+            'email'                 =>$request->email,
+            'business_name'         =>$request->business_name,
+            'business_name_slug'    =>Str::slug($request->business_name),
+            'activity_areas_id'     =>$request->activity_areas_id,
+            'url'                   =>$request->url,
+            'logo_png'              =>$this->uploadPNGLogo($request),
+            'logo_svg'              =>$this->uploadSVGLogo($request),
+            'status'                =>'soumis',
         ]);
 
         // Sending Email
-        Mail::to($request->email)
-        ->send(new SubmissionMail($businees_logo->toArray()));
+        // Mail::to($request->email)
+        // ->send(new SubmissionMail($businees_logo->toArray()));
 
         return response()->json(['message'=>"Votre logo a été soumis avec succès."],200);
     }

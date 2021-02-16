@@ -18,6 +18,7 @@ class CreateBusinessLogosTable extends Migration
             $table->foreignId('activity_areas_id')->constrained('activity_areas')->nullable();
             $table->string('name');
             $table->string('business_name');
+            $table->string('business_name_slug');
             $table->string('email');
             $table->string('url')->nullable();
             $table->string('logo_png');

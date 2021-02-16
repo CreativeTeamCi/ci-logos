@@ -17,8 +17,37 @@ class HomeController extends Controller
         join('activity_areas','activity_areas.id','business_logos.activity_areas_id')
         ->select('business_logos.*','activity_areas.libelle as activity_area')
         ->orderBy('business_name')
+        ->limit(30)
         ->get();
         return view('pages.accueil.index',$data);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function searchLogos(Request $request)
+    {
+        $limit = 32;
+        empty($request->page) && $request->page=0;
+        $data=BusinessLogo::
+        join('activity_areas','activity_areas.id','business_logos.activity_areas_id')
+        ->select('business_logos.*','activity_areas.libelle as activity_area')
+        ->where('status', 'valide')
+        ->where('business_name', 'like', '%'. $request->search . '%')
+        ->orWhere('name', 'like', '%'. $request->search . '%')
+        ->orWhere('activity_areas.libelle', 'like', '%'. $request->search . '%')
+        ->orderBy('business_name')
+        ->offset($request->page*$limit)
+        ->limit($limit)
+        ->get();
+        // ->forPage($request->page, $limit);
+        return response()->json([
+            'error'=>false,
+            'message'=>'Liste des logos recherchés.',
+            'data'=>$data,
+        ]);
     }
 
     /**

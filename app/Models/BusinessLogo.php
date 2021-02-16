@@ -12,6 +12,7 @@ class BusinessLogo extends Model
     protected $fillable = [
         'name',
         'business_name',
+        'business_name_slug',
         'activity_areas_id',
         'email',
         'logo_png',

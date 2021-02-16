@@ -7,9 +7,9 @@ import Footer from '../Footer'
 import axios from 'axios'
 import $ from 'jquery'
 import { isEmptyObject } from 'jquery';
+import { BASE_URL } from '../../constants/API'
 
 const Home = () => {
-    const baseUrl = 'http://ci_logo.com.test/api'
     const [search, setSearch] = useState('')
     const [logosList, setLogosList] = useState([])
     const [isFetching, setIsFetching] = useState(true)
@@ -44,7 +44,7 @@ const Home = () => {
         const timer = setTimeout(() => {
             setButtonLoadIsVisible(true);
             // - Requête de récupération
-            axios.get(`${baseUrl}/search-logos/${search}`)
+            axios.get(`${BASE_URL}/search-logos/${search}`)
             .then(function (response) {
                 setPage(1)
                 setLogosList(() => {
@@ -64,9 +64,9 @@ const Home = () => {
         // - On vérifie si une recherche n'est pas en cours
         var url =''
         if (search==null || search==undefined || search=='') {
-            url = `${baseUrl}/logos/page/${page}`
+            url = `${BASE_URL}/logos/page/${page}`
         }else {
-            url = `${baseUrl}/search-logos/${search}/page/${page}`
+            url = `${BASE_URL}/search-logos/${search}/page/${page}`
         }
         setIsFetching(true);
         // - Requête de récupération

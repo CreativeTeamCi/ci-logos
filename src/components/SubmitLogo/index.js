@@ -4,9 +4,9 @@ import DarkLightBtn from '../DarkLightBtn'
 import Footer from '../Footer'
 import axios from 'axios'
 import {Notyf} from 'notyf'
+import { BASE_URL } from '../../constants/API'
 
 const SubmitLogo = () => {
-    const baseUrl = 'http://ci_logo.com.test/api'
     // Create an instance of Notyf
     const notyf = new Notyf({duration: 5000, position: {x: 'right',y: 'top'}})
     const [activitiesArea, setActivitiesArea] = useState([])
@@ -23,7 +23,7 @@ const SubmitLogo = () => {
 
     useEffect(()=>{
         // - Recuperation de la liste des secteurs d'activités
-        axios.get(`${baseUrl}/activities-area`)
+        axios.get(`${BASE_URL}/activities-area`)
         .then(function (response) {
             setActivitiesArea(response.data.data);
         })
@@ -41,7 +41,7 @@ const SubmitLogo = () => {
         })
         // console.log('MyForm', myForm,form)
         // - Soumission du formulaire
-        axios.post(`${baseUrl}/submission`,form)
+        axios.post(`${BASE_URL}/submission`,form)
         .then(function (response) {
             cleanFormErrorStyle()
             notyf.dismissAll();

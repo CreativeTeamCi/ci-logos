@@ -30,7 +30,7 @@ const Logo = ({data}) => {
                             </span>
                         </a>
                         {
-                            logo_svg!=='' || logo_svg!=null && (
+                            logo_svg && (
                                 <a href={logo_svg} download={`${business_name} SVG Logo`}>
                                     <span className="crt__logo__download__overlay--svg">
                                         Download SVG

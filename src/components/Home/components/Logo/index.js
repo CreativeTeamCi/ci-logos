@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { BASE_URL } from '../../../../constants/API'
 
 const Logo = ({data}) => {
     const {
@@ -16,22 +17,23 @@ const Logo = ({data}) => {
         updated_at,
         url,
     } = data
+    const base_url = BASE_URL.replace('/api','')
     return (
         <div key={id} className="crt__logo">
             <div className="crt__logo__holder">
                 <div className="crt__logo__image">
-                    <img src={logo_png} alt='SVG logo' />
+                    <img src={`${base_url}/${logo_png}`} alt='SVG logo' />
                 </div>
                 <div className="crt__logo__download">
                     <div className="crt__logo__download__overlay">
-                        <a href={logo_png} download={`${business_name}  PNG Logo`}>
+                        <a href={`${base_url}/${logo_png}`} download={`${business_name}  PNG Logo`}>
                             <span className="crt__logo__download__overlay--png">
                                 Download PNG
                             </span>
                         </a>
                         {
                             logo_svg && (
-                                <a href={logo_svg} download={`${business_name} SVG Logo`}>
+                                <a href={`${base_url}/${logo_svg}`} download={`${business_name} SVG Logo`}>
                                     <span className="crt__logo__download__overlay--svg">
                                         Download SVG
                                     </span>

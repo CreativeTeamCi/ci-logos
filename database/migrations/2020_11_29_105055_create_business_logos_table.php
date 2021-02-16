@@ -23,7 +23,7 @@ class CreateBusinessLogosTable extends Migration
             $table->string('url')->nullable();
             $table->string('logo_png');
             $table->string('logo_svg')->nullable();
-            $table->string('status');
+            $table->enum('status', ['soumis', 'valide'])->default('soumis');
             $table->timestamps();
         });
     }

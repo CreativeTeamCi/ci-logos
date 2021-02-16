@@ -31,13 +31,14 @@ class HomeController extends Controller
     {
         $limit = 32;
         empty($request->page) && $request->page=0;
+        $str = $request->search;
         $data=BusinessLogo::
         join('activity_areas','activity_areas.id','business_logos.activity_areas_id')
         ->select('business_logos.*','activity_areas.libelle as activity_area')
-        ->where('status', 'valide')
         ->where('business_name', 'like', '%'. $request->search . '%')
         ->orWhere('name', 'like', '%'. $request->search . '%')
         ->orWhere('activity_areas.libelle', 'like', '%'. $request->search . '%')
+        ->where('status', 'valide')
         ->orderBy('business_name')
         ->offset($request->page*$limit)
         ->limit($limit)

@@ -182,7 +182,6 @@ const SubmitLogo = () => {
                                 <div class="col-100 url">
                                     <label for="url" class="float-left">
                                         <b>Site web de l'entreprise</b>
-                                        <span class="text-danger">*</span>
                                     </label>
                                     <input type="text" className='form-control' name="url" id="url" placeholder="Ex: https://creative-team.ci" value={myForm.url} onChange={(e)=>handleChangeText(e)}/>
                                 </div>

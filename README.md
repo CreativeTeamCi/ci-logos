@@ -9,20 +9,20 @@ You have to deploy the front-en and and the backend for this project
 
 ### 1- Front-end deployement
 - Clone the front-end branch with
-`$ git clone --branch front-end https://github.com/CreativeTeamCi/ci-logos.git`
+    `$ git clone --branch front-end https://github.com/CreativeTeamCi/ci-logos.git`
 - Then install all dependencies in project directory with
-`$ npm install`
-- Wait for all dependecies to be installed and now configure the .env file for the backend server
-`HOST=http://localhost:8000`
-- Launch the project
-`$ npm start`
+    `$ npm install`
+- Wait for all dependecies to be installed and now edit the `/src/constants/API/index.js` file for the backend server
+    `BASE_URL=http://localhost:8000/api`
+- Launch the project with
+    `$ npm start`
 
 ### 1- Back-end deployement
 - Clone the back-end branch with
-`$ git clone --branch back-end https://github.com/CreativeTeamCi/ci-logos.git`
+    `$ git clone --branch back-end https://github.com/CreativeTeamCi/ci-logos.git`
 - Then install all packages in project directory with
-`$ npm install`
-- Wait for all packages to be installed and now configure the .env file for the database
+    `$ composer install`
+- Wait for all packages to be installed and now opent and configure the .env file for the database email sending
 ```js
 ...
 DB_CONNECTION=mysql
@@ -43,11 +43,13 @@ MAIL_FROM_NAME="${APP_NAME}"
 ...
 ```
 - Launch fresh migration with seeders
-`$ php artisan migrate:fresh --seed`
-After it, you have to launch the projetc with the command below
-`$ php artisan serve`
+    `$ php artisan migrate:fresh --seed`
+- Run the server
+    `$ php artisan serve`
+- See the project
+[**Michael Yves SANA**](http://localhost:8000)
 
 ## Authors
 * [**Michael Yves SANA**](https://github.com/SanaMichael)
 * [**Euphrate André ATCHORI**](https://github.com/andreatchori) 
-* [**N'GANA ALHASSANE SORO**](https://github.com/AlhassaneSoro)
+* [**N'Gana Alhassane SORO**](https://github.com/AlhassaneSoro)

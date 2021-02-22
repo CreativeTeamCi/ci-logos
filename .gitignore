@@ -10,7 +10,7 @@
 
 # production
 /build
-/src/constants/API
+/src/constants/API/index.js
 
 # misc
 .DS_Store

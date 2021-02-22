@@ -5,7 +5,7 @@ This is an open source project where you can download for free a hight quality l
 
 Ci-logos is a simple web app built with ReactJs. Follow the instructions below to set up the project on your local machine for development and testing purposes.
 ## Deployement
-You have to deploy the front-en and and the backend for this project
+You have to deploy the front-end and the back-end for the whole project
 
 ### 1- Front-end deployement
 - Clone the front-end branch with
@@ -13,7 +13,7 @@ You have to deploy the front-en and and the backend for this project
 - Then install all dependencies in project directory with
     `$ npm install`
 - Wait for all dependecies to be installed and now edit the `/src/constants/API/index.js` file for the backend server
-    `BASE_URL=http://localhost:8000/api`
+    `BASE_URL='http://localhost:8000/api'`
 - Launch the project with
     `$ npm start`
 
@@ -46,8 +46,6 @@ MAIL_FROM_NAME="${APP_NAME}"
     `$ php artisan migrate:fresh --seed`
 - Run the server
     `$ php artisan serve`
-- See the project
-[**Michael Yves SANA**](http://localhost:8000)
 
 ## Authors
 * [**Michael Yves SANA**](https://github.com/SanaMichael)

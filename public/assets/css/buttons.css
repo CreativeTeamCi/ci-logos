@@ -10,6 +10,10 @@
     border: none;
     border-radius: 4px;
     transition: .2s all ease-in-out;
+    text-decoration: none;
+}
+.crt__btn__contribute:hover {
+    color: #FFFFFF;
 }
 
 .crt__btn__submission {

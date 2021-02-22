@@ -21,7 +21,7 @@ label {
   font-weight: 800;
 }
 
-input[type=button] {
+.submit {
   background-color: #242424;
   color: white;
   padding: 12px 20px;
@@ -31,7 +31,7 @@ input[type=button] {
   float: right;
 }
 
-input[type=button]:hover {
+.submit:hover {
   color: #000;
   border: 2px solid #000;
   background-color: #FFF;

@@ -10,6 +10,7 @@ const SubmitLogo = () => {
     // Create an instance of Notyf
     const notyf = new Notyf({duration: 5000, position: {x: 'right',y: 'top'}})
     const [activitiesArea, setActivitiesArea] = useState([])
+    const [loader, setLoader] = useState(false)
     const initialForm = {
         'name' : '',
         'email' : '',
@@ -41,8 +42,10 @@ const SubmitLogo = () => {
         })
         // console.log('MyForm', myForm,form)
         // - Soumission du formulaire
+        setLoader(true)
         axios.post(`${BASE_URL}/submission`,form)
         .then(function (response) {
+            setLoader(false)
             cleanFormErrorStyle()
             notyf.dismissAll();
             notyf.success(response.data.message);
@@ -52,6 +55,7 @@ const SubmitLogo = () => {
             // console.log('response', response)
         })
         .catch(function (error) {
+            setLoader(false)
             cleanFormErrorStyle()
             const errorsMessages = error.response.data.message
             // console.log('message', typeof errorsMessages)
@@ -226,7 +230,9 @@ const SubmitLogo = () => {
                             </div>
                             <div className="row">
                                 <div className="col-100">
-                                    <input type="button" className="soumettre" value="Soumettre" onClick={submitForm}/>
+                                    <button className='submit' type="button" onClick={submitForm} disabled={loader} style={loader ? {cursor:'not-allowed'} : {}}>
+                                        { loader ? 'En cours...' : 'Soumettre' }
+                                    </button>
                                 </div>
                             </div>
                         </form>

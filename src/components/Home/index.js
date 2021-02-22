@@ -121,13 +121,12 @@ const Home = () => {
                             <img src="assets/images/logo.png" />
                         </div>
                         <h1>
-                            CI Logos, une collection <a href="#" target="_blank">open source</a> de logos d'entreprise ivoiriennes de haute qualité pour une utilisation gratuite.
+                            CI Logos, une collection <a target="_blank" href="https://github.com/CreativeTeamCi/ci-logos">open source</a> de logos d'entreprise ivoiriennes de haute qualité pour une utilisation gratuite.
                         </h1>
-                        <button className="crt__btn__contribute">
+                        <a target="_blank" className="crt__btn__contribute" href="https://github.com/CreativeTeamCi/ci-logos">
                             <i className="fa fa-github"></i>
-                            &nbsp;
                             Contribuer sur GitHub
-                        </button>
+                        </a>
                         <a style={{ marginLeft: 20 }} href="#">
                             <Link to='/submit-logo'>
                                 <button className="crt__btn__submission">

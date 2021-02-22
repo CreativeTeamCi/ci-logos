@@ -353,7 +353,11 @@ input[value=close]:hover {
 
 .crt__logo__download__overlay--svg,
 .crt__logo__download__overlay--png {
-	padding: 20%;
+	font-size: 14px;
+	padding: 10px 10px;
+	/* background-color: #FFF; */
+	color: white;
+	background-color: #000;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -362,7 +366,81 @@ input[value=close]:hover {
 
 .crt__logo__download__overlay--svg:hover,
 .crt__logo__download__overlay--png:hover {
-	background-color: #fff;
+	color: white;
+	background-color: #EE7E37;
+}
+
+/* DOWNLOAD BUTTON STYLE*/
+.typ-subhed {
+	font-family: 'Oswald', sans-serif;
+	font-size: 18px;
+	line-height: 20px;
+	letter-spacing: 0;
+}
+/* lets create a container and put it in the middle */
+.container {
+	height: 100%;
+	width: 50%;
+	margin: auto;
+}
+.container > * {
+	width: 100%;
+}
+
+.ctrl-standard.fx-sliderIn {
+	padding: 10px 10px;
+	font-size: 14px;
+	color: white;
+	background-color: #000;
+}
+
+.ctrl-standard.fx-sliderIn::after {
+	color: white;
+	background: #EE7E37;
+}
+[class*="ctrl-"] {
+	padding: 5ox 10px;
+	border-radius: 2px;
+}
+[class*="ctrl-"][class*="fx-"]:hover,
+[class*="ctrl-"][class*="fx-"].active {
+	color: white;
+}
+  
+[class*="fx-"],
+[class*="fx-"]:hover {
+	transition: color 0.5s  ease-in-out;
+}
+[class*="fx-"]:not(.fx-dyna) {
+	position: relative;
+	z-index: 1;
+	transition-delay: 0.2s !important;
+	overflow: hidden;
+}
+[class*="fx-"]:not(.fx-dyna)::after,
+[class*="fx-"]:not(.fx-dyna)::before {
+	content: "";
+	display: block;
+	position: absolute;
+	z-index: -1;
+}
+	
+.fx-sliderIn::after {
+	transition: width 0.5s ease-in-out;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	width: 0;
+}
+.fx-sliderIn:hover::after,
+.fx-sliderIn.active::after {
+	transition: width 0.5s ease-in-out;
+	width: 100%;
+}
+:checked + .fx-sliderIn::after,
+.fx-sliderIn.active::after {
+	width: 300%;
 }
 
 /* 404 Page */

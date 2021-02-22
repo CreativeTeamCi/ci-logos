@@ -27,16 +27,16 @@ const Logo = ({data}) => {
                 <div className="crt__logo__download">
                     <div className="crt__logo__download__overlay">
                         <a href={`${base_url}/${logo_png}`} download={`${business_name}  PNG Logo`}>
-                            <span className="crt__logo__download__overlay--png">
-                                Download PNG
-                            </span>
+                            <div class="row-xGrid iso-standard">
+                                <button class="ctrl-standard typ-subhed fx-sliderIn">Download PNG</button>
+                            </div>
                         </a>
                         {
                             logo_svg && (
-                                <a href={`${base_url}/${logo_svg}`} download={`${business_name} SVG Logo`}>
-                                    <span className="crt__logo__download__overlay--svg">
-                                        Download SVG
-                                    </span>
+                                <a href={`${base_url}/${logo_svg}`} download={`${business_name} SVG Logo`} style={{marginTop:10}}>
+                                    <div class="row-xGrid iso-standard">
+                                        <button class="ctrl-standard typ-subhed fx-sliderIn">Download SVG</button>
+                                    </div>
                                 </a>
                             )
                         }

@@ -1,13 +1,13 @@
-# Ci-Logos
+# Ci-logos
 
 This is an open source project where you can download for free a hight quality logos of Ivory Coast companies. You can visit the wesite at [ci-logos.com](https://ci-logos.com).
 ## Getting Started
 
 Ci-logos is a simple web app built with ReactJs. Follow the instructions below to set up the project on your local machine for development and testing purposes.
-## Deployement
+## Deployment
 You have to deploy the front-end and the back-end for the whole project
 
-### 1- Front-end deployement
+### 1- Front-end deployment
 - Clone the front-end branch with
     `$ git clone --branch front-end https://github.com/CreativeTeamCi/ci-logos.git`
 - Then install all dependencies in project directory with
@@ -17,12 +17,12 @@ You have to deploy the front-end and the back-end for the whole project
 - Launch the project with
     `$ npm start`
 
-### 1- Back-end deployement
+### 2- Back-end deployment
 - Clone the back-end branch with
     `$ git clone --branch back-end https://github.com/CreativeTeamCi/ci-logos.git`
 - Then install all packages in project directory with
     `$ composer install`
-- Wait for all packages to be installed and now opent and configure the .env file for the database email sending
+- Wait for all packages to be installed and now open and configure the .env file for the database and email sending
 ```js
 ...
 DB_CONNECTION=mysql

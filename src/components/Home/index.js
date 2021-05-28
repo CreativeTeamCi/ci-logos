@@ -125,6 +125,7 @@ const Home = () => {
                         </h1>
                         <a target="_blank" className="crt__btn__contribute" href="https://github.com/CreativeTeamCi/ci-logos">
                             <i className="fa fa-github"></i>
+                            &nbsp;
                             Contribuer sur GitHub
                         </a>
                         <a style={{ marginLeft: 20 }} href="#">
